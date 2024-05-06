@@ -2,7 +2,7 @@
    "scripts": {
       "dev": "next dev",
       "start": "parcel serverless/index.html",
-      "build": "parcel build serverless/index.html"
+      "build": "parcel build serverless/index.html --public-url ./"
    },
    "homepage": "https://alexcusack.github.io/your-repository/",
    "dependencies": {
