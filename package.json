@@ -1,0 +1,23 @@
+{
+   "scripts": {
+      "dev": "next dev",
+      "start": "parcel serverless/index.html",
+      "build": "parcel build serverless/index.html --public-url ./serverless"
+   },
+   "homepage": "https://alexcusack.github.io/your-repository/",
+   "dependencies": {
+      "@coinbase/wallet-sdk": "^4.0.0-beta.12",
+      "@tanstack/react-query": "^5.32.1",
+      "next": "^14.2.3",
+      "qrcode.react": "^3.1.0",
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1",
+      "viem": "^2.9.31",
+      "wagmi": "^2.8.0",
+      "web3": "^4.8.0"
+   },
+   "devDependencies": {
+      "parcel": "^2.12.0",
+      "process": "^0.11.10"
+   }
+}
