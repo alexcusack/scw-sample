@@ -7,7 +7,7 @@ const App = () => {
   // Determine which component to render based on the URL
   const currentPath = window.location.pathname;
 
-  if (currentPath === "/pay") {
+  if (currentPath === "scw-sample/pay") {
     return <PayPage />;
   } else {
     return <HomePage />;
