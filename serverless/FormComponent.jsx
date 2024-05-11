@@ -1,7 +1,27 @@
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
 
-const ROOT_URL = 'http://localhost:3000';
+const ROOT_URL = window.location.host.startsWith("localhost") ? 
+ 'http://localhost:3000' : 
+ 'https://alexcusack.github.io/scw-sample/'
+;
+
+/* 
+* Checkout tab
+*   * Recieve address auto populates 
+* 
+* 
+* Pay tab 
+*   * Slight cleanup 
+*   * Tap to complete 
+* 
+* Optional
+*  * You can track incoming receive transactions 
+*
+* Next projects 
+*   * SNX 
+*   * scw wallet using our own root domain 
+*/
 
 const FormAndQRComponent = ({receiveAddress}) => {
   const [formData, setFormData] = useState({

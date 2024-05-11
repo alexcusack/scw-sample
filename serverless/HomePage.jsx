@@ -6,7 +6,7 @@ import Web3 from 'web3'
 
 const APP_NAME = 'Guest Checkout'
 const APP_LOGO_URL = 'https://www.creativefabrica.com/wp-content/uploads/2022/04/17/Pizza-Logo-Design-Graphics-29132095-1-1-580x387.jpg'
-const DEFAULT_ETH_JSONRPC_URL = "https://sepolia.base.org"
+const DEFAULT_ETH_JSONRPC_URL = "https://seplia.base.org"
 const DEFAULT_CHAIN_ID = 1
 
 
@@ -74,7 +74,7 @@ export default function HomePage() {
  
   return (
     <div>
-      <Header title="Accept payments from anyone" />
+      <Header title="Accept Payments" />
       
       <div>
         <button onClick={handleClick}> Connect Wallet</button>
