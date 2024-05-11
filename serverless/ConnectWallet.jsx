@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Provider, ConnectCoinbaseWallet } from './walletConnector'
 
 const ConnectWallet = () => {
   const [connected, setConnected] = useState(false);
-  const history = useNavigate();
+  const [ownerAddress, setOwnerAddress] = useState('');
+  const navigate = useNavigate();
 
   const handleConnectClick = () => {
     // Simulate wallet connection
-    setConnected(true);
+    ConnectCoinbaseWallet().then(res => {
+      console.log('wallet connected')
+      console.log(res)
+      setConnected(true);
+      setOwnerAddress(res[0]) 
+    }).catch(err => {
+      console.log('error on connect')
+    })
+    
   };
 
   if (connected) {
-    history.push('/scw-sample/home2');
+    navigate('/scw-sample/home', { 
+      state: { connected: connected, ownerAddress: ownerAddress } 
+    });
   }
 
   return (

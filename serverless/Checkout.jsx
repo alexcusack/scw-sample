@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import QRCode from 'qrcode.react';
 
-const Checkout = () => {
+const Checkout = ({receiveAddress}) => {
   const [total, setTotal] = useState('');
   const [showQRCode, setShowQRCode] = useState(false);
 
@@ -40,7 +40,7 @@ const Checkout = () => {
         <button style={styles.button} onClick={handleCancel}>Cancel</button>
       </div>
       <div style={styles.keypad}>
-        {['A/C', '%', '÷', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='].map((key) => (
+        {['A/C', '00', '%', '÷', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='].map((key) => (
           <button
             key={key}
             style={styles.keypadButton}
