@@ -2962,6 +2962,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _client = require("react-dom/client");
 var _reactRouterDom = require("react-router-dom");
 var _connectWallet = require("./ConnectWallet");
 var _connectWalletDefault = parcelHelpers.interopDefault(_connectWallet);
@@ -2979,21 +2980,8 @@ const App = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Bro
                     exact: true,
                     element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _connectWalletDefault.default), {}, void 0, false, {
                         fileName: "serverless/home.jsx",
-                        lineNumber: 19,
-                        columnNumber: 38
-                    }, void 0)
-                }, void 0, false, {
-                    fileName: "serverless/home.jsx",
-                    lineNumber: 19,
-                    columnNumber: 7
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/scw-sample",
-                    exact: true,
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _connectWalletDefault.default), {}, void 0, false, {
-                        fileName: "serverless/home.jsx",
                         lineNumber: 20,
-                        columnNumber: 48
+                        columnNumber: 38
                     }, void 0)
                 }, void 0, false, {
                     fileName: "serverless/home.jsx",
@@ -3001,12 +2989,12 @@ const App = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Bro
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/scw-sample/connect",
+                    path: "/scw-sample",
                     exact: true,
                     element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _connectWalletDefault.default), {}, void 0, false, {
                         fileName: "serverless/home.jsx",
                         lineNumber: 21,
-                        columnNumber: 56
+                        columnNumber: 48
                     }, void 0)
                 }, void 0, false, {
                     fileName: "serverless/home.jsx",
@@ -3014,11 +3002,12 @@ const App = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Bro
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/scw-sample/home2",
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homePage2Default.default), {}, void 0, false, {
+                    path: "/scw-sample/connect",
+                    exact: true,
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _connectWalletDefault.default), {}, void 0, false, {
                         fileName: "serverless/home.jsx",
                         lineNumber: 22,
-                        columnNumber: 48
+                        columnNumber: 56
                     }, void 0)
                 }, void 0, false, {
                     fileName: "serverless/home.jsx",
@@ -3026,11 +3015,11 @@ const App = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Bro
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/scw-sample/checkout",
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _checkoutDefault.default), {}, void 0, false, {
+                    path: "/scw-sample/home2",
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _homePage2Default.default), {}, void 0, false, {
                         fileName: "serverless/home.jsx",
                         lineNumber: 23,
-                        columnNumber: 51
+                        columnNumber: 48
                     }, void 0)
                 }, void 0, false, {
                     fileName: "serverless/home.jsx",
@@ -3038,34 +3027,53 @@ const App = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Bro
                     columnNumber: 7
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                    path: "/scw-sample/pay",
-                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _payPageDefault.default), {}, void 0, false, {
+                    path: "/scw-sample/checkout",
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _checkoutDefault.default), {}, void 0, false, {
                         fileName: "serverless/home.jsx",
                         lineNumber: 24,
-                        columnNumber: 46
+                        columnNumber: 51
                     }, void 0)
                 }, void 0, false, {
                     fileName: "serverless/home.jsx",
                     lineNumber: 24,
                     columnNumber: 7
+                }, undefined),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                    path: "/scw-sample/pay",
+                    element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _payPageDefault.default), {}, void 0, false, {
+                        fileName: "serverless/home.jsx",
+                        lineNumber: 25,
+                        columnNumber: 46
+                    }, void 0)
+                }, void 0, false, {
+                    fileName: "serverless/home.jsx",
+                    lineNumber: 25,
+                    columnNumber: 7
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "serverless/home.jsx",
-            lineNumber: 18,
+            lineNumber: 19,
             columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "serverless/home.jsx",
-        lineNumber: 17,
+        lineNumber: 18,
         columnNumber: 3
     }, undefined);
 _c = App;
-(0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
+const root = (0, _client.createRoot)(document.getElementById("root"));
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
+    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
+        fileName: "serverless/home.jsx",
+        lineNumber: 33,
+        columnNumber: 3
+    }, undefined)
+}, void 0, false, {
     fileName: "serverless/home.jsx",
-    lineNumber: 29,
-    columnNumber: 17
-}, undefined), document.getElementById("root"));
+    lineNumber: 32,
+    columnNumber: 1
+}, undefined));
 var _c;
 $RefreshReg$(_c, "App");
 
@@ -3074,7 +3082,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","react-router-dom":"9xmpe","./ConnectWallet":"gse0C","./PayPage":"1rHQ3","./HomePage2":"5uCvK","./Checkout":"54Qac","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom":"j6uA9","react-dom/client":"lOjBx","react-router-dom":"9xmpe","./ConnectWallet":"gse0C","./PayPage":"1rHQ3","./HomePage2":"5uCvK","./Checkout":"54Qac","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27296,7 +27304,28 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"9xmpe":[function(require,module,exports) {
+},{}],"lOjBx":[function(require,module,exports) {
+"use strict";
+var m = require("aaccff5d309d9239");
+var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.createRoot(c, o);
+    } finally{
+        i.usingClientEntryPoint = false;
+    }
+};
+exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+        return m.hydrateRoot(c, h, o);
+    } finally{
+        i.usingClientEntryPoint = false;
+    }
+};
+
+},{"aaccff5d309d9239":"j6uA9"}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.23.0
  *
@@ -34036,12 +34065,12 @@ var _s = $RefreshSig$();
 const ConnectWallet = ()=>{
     _s();
     const [connected, setConnected] = (0, _react.useState)(false);
-    const history = (0, _reactRouterDom.useNavigate)();
+    const navigate = (0, _reactRouterDom.useNavigate)();
     const handleConnectClick = ()=>{
         // Simulate wallet connection
         setConnected(true);
     };
-    if (connected) history.push("/scw-sample/home2");
+    if (connected) navigate("/scw-sample/home2");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         style: styles.container,
         children: [
@@ -34069,7 +34098,7 @@ const ConnectWallet = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(ConnectWallet, "O9kV/Rzml+uFVf6gieTA12TBfTU=", false, function() {
+_s(ConnectWallet, "ONnioDu0+CxWO03SPr0vKFXNiu0=", false, function() {
     return [
         (0, _reactRouterDom.useNavigate)
     ];
@@ -34845,10 +34874,10 @@ var _reactRouterDom = require("react-router-dom");
 var _s = $RefreshSig$();
 const HomePage2 = ()=>{
     _s();
-    const history = (0, _reactRouterDom.useNavigate)();
-    const transactions = []; // Placeholder for transaction history
+    const navigate = (0, _reactRouterDom.useNavigate)();
+    const transactions = []; // Placeholder for transaction navigate
     const handleChargeClick = ()=>{
-        history.push("/checkout");
+        navigate("/scw-sample/checkout");
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         style: styles.container,
@@ -34907,7 +34936,7 @@ const HomePage2 = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(HomePage2, "UuBpJaL/77ixlr0CeL0xEoy8mog=", false, function() {
+_s(HomePage2, "CzcTeTziyjMsSrAVmHuCCb6+Bfg=", false, function() {
     return [
         (0, _reactRouterDom.useNavigate)
     ];
