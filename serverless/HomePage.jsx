@@ -1,108 +1,104 @@
-import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
-import { useState } from 'react';
-import { WagmiProvider } from 'wagmi';
-import FormAndQRComponent from './FormComponent'
-import Web3 from 'web3'
+import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Header from './Header';
 
-const APP_NAME = 'Guest Checkout'
-const APP_LOGO_URL = 'https://www.creativefabrica.com/wp-content/uploads/2022/04/17/Pizza-Logo-Design-Graphics-29132095-1-1-580x387.jpg'
-const DEFAULT_ETH_JSONRPC_URL = "https://seplia.base.org"
-const DEFAULT_CHAIN_ID = 1
+const HomePage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { connected, ownerAddress } = location.state || {}; // Get state from navigation
 
+  const transactions = []; // Placeholder for transaction navigate
 
-
-function Header({ title }) {
-  return <h1>{title ? title : 'Default title'}</h1>;
-}
-
-export default function HomePage() {
- 
-  const [state, updateState] = useState({
-    connected: false,
-    address: null
-  });
- 
-  function handleClick() {
-    const coinbaseWallet = new CoinbaseWalletSDK({
-      appName: APP_NAME,
-      appLogoUrl: APP_LOGO_URL,
-      darkMode: false
-    }) 
-    const provider = coinbaseWallet.makeWeb3Provider(DEFAULT_ETH_JSONRPC_URL, DEFAULT_CHAIN_ID)  
-    provider.on('connect', (info) => {
-      console.log('connect', info )
-      // setConnect(info);
+  const handleChargeClick = () => {
+    navigate('/checkout', { 
+      state: { ownerAddress: ownerAddress } 
     });
+  };
 
-    provider.on('disconnect', (error) => {
-      console.log('disconnect', error )
-      // setDisconnect({ code: error.code, message: error.message });
-    });
 
-    provider.on('accountsChanged', (accounts) => {
-      console.log('accountsChanged', accounts )
-      // setAccountsChanged(accounts);
-    });
+  const handleDisconnect = () => {
+    // Handle the disconnect logic
+    navigate('/');
+  };
 
-    provider.on('chainChanged', (chainId) => {
-      console.log('chainChanged', chainId )
-      // setChainChanged(chainId);
-    });
-
-    provider.on('message', (message) => {
-      console.log('message', message )
-      // setMessage(message);
-    });
-    const web3 = new Web3(provider)
-    provider.request({ method: 'eth_requestAccounts' }).then(response => {
-      console.log(`User's address is ${response}`)
-      updateState({
-        connected: true,
-        address: response
-      })
-      // Optionally, have the default account set for web3.js
-      // web3.eth.defaultAccount = accounts[0]
-    })
-
-    
-  }
-  // Input receive address, USDC amount, and have it generate a QR code 
-  // In code I'll use the data field 
-  // we would then take them to a URL with a pay button, tapping that would open their wallet 
-  // and clear the transaction. 
-  // this would land them on a /pay URL 
- 
-  return (
-    <div>
-      <Header title="Accept Payments" />
-      
-      <div>
-        <button onClick={handleClick}> Connect Wallet</button>
+return (
+    <div style={styles.container}>
+      <Header connected={connected} ownerAddress={ownerAddress} onDisconnect={handleDisconnect} />
+      <h1 style={styles.title}>Bodega</h1>
+      <div style={styles.instructions}>
+        <p>This app has two sides to it: the vendor and the payer.</p>
+        <p>The vendor is any merchant wanting to accept payments via Base. The payer is any purchaser that receives a charge URL from the vendor.</p>
+        <p>As a vendor, to create your first charge, tap Create New Charge below.</p>
       </div>
-      <div>
-        <ol>
-          <li>
-            Connect a wallet
-          </li>
-          <li>
-            Update the charge amount
-          </li>
-          <li>
-            Scan the QR code or share the payment link to receive payment
-          </li>
-        </ol>
-
-      </div>
-      
-      <div>
-      { state.connected ? 
-        <p key="address">
-          Your receive address: {state.address ? `${state.address}` : ""}
-        </p>
-       : null
-       }
-        <FormAndQRComponent receiveAddress={state.address}/>
-      </div>
+      <button style={styles.button} onClick={handleChargeClick}>Create New Charge</button>
     </div>
   );
-}
+};
+
+/* 
+
+  <div style={styles.transactionHistory}>
+    <h2>Transaction History</h2>
+    {transactions.length === 0 ? (
+      <p>No transactions yet.</p>
+    ) : (
+      // Map through transactions and display them
+      transactions.map((transaction, index) => (
+        <div key={index} style={styles.transaction}>
+          {Transaction details}
+        </div>
+      ))
+    )}
+  </div>
+*/
+
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+    backgroundColor: '#f7f7f7',
+    minHeight: '100vh',
+    position: 'relative', // Added for absolute positioning of the pill
+  },
+  title: {
+    fontSize: '24px',
+    marginBottom: '20px',
+  },
+  transactionHistory: {
+    width: '100%',
+    maxWidth: '400px',
+    padding: '20px',
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    marginBottom: '20px',
+  },
+  transaction: {
+    padding: '10px',
+    borderBottom: '1px solid #ccc',
+  },
+  instructions: {
+    maxWidth: '600px',
+    marginBottom: '20px',
+    padding: '20px',
+    backgroundColor: '#fff',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    textAlign: 'left',
+  },
+  button: {
+    padding: '10px 20px',
+    fontSize: '16px',
+    color: '#fff',
+    backgroundColor: '#007bff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  },
+};
+
+export default HomePage;

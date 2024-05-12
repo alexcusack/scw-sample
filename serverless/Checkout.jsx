@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import QRCode from 'qrcode.react';
+import Header from './Header';
 
 const ROOT_URL = window.location.host.startsWith("localhost") ? 
- 'http://localhost:3000' : 
+ 'http://localhost:1234/scw-sample' : 
  'https://alexcusack.github.io/scw-sample'
 ;
 
 const Checkout = () => {
   const [total, setTotal] = useState('');
   const [showQRCode, setShowQRCode] = useState(false);
+  const [qrUrl, setQrUrl] = useState('');
   const location = useLocation();
-  const { receiveAddress } = location.state || {}; // Get state from navigation
+  const { ownerAddress } = location.state || {}; // Get state from navigation
 
+  const navigate = useNavigate();
   const handleButtonPress = (value) => {
     if (value === 'A/C') {
       setTotal('');
@@ -28,17 +31,26 @@ const Checkout = () => {
   };
 
   const handleCharge = () => {
+    const url = `${ROOT_URL}/pay?amount=${total}&receiveAddress=${ownerAddress}`;
+    setQrUrl(url);
     setShowQRCode(true);
   };
 
   const handleCancel = () => {
     setTotal('');
     setShowQRCode(false);
+    setQrUrl('');
+  };
+
+  const handleDisconnect = () => {
+    // Handle the disconnect logic
+    navigate('/');
   };
 
   return (
     <div style={styles.container}>
-      <div style={styles.header}>HEADER</div>
+      <Header connected={true} ownerAddress={ownerAddress} onDisconnect={handleDisconnect} />
+      <div style={styles.header}>New Charge</div>
       <div style={styles.totalContainer}>
         <span style={styles.totalLabel}>Total:</span>
         <span style={styles.totalValue}>${total}</span>
@@ -61,11 +73,14 @@ const Checkout = () => {
       {showQRCode && (
         <div style={styles.qrContainer}>
           <QRCode
-            value={`${ROOT_URL}/pay?amount=${total}&receiveAddress=${receiveAddress}`}
+            value={qrUrl}
             size={256}
             level="H"
             includeMargin={true}
           />
+          <div style={styles.urlContainer}>
+            <p style={styles.urlText}>{qrUrl}</p>
+          </div>
         </div>
       )}
     </div>
@@ -81,7 +96,6 @@ const styles = {
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f7f7f7',
     minHeight: '100vh',
-    justifyContent: 'space-between'
   },
   header: {
     fontSize: '24px',
@@ -150,8 +164,17 @@ const styles = {
     backgroundColor: '#fff',
     border: '1px solid #ccc',
     borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
-  }
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    textAlign: 'center',
+  },
+  urlContainer: {
+    marginTop: '10px',
+    wordBreak: 'break-word',
+  },
+  urlText: {
+    fontSize: '14px',
+    color: '#007bff',
+  },
 };
 
 export default Checkout;

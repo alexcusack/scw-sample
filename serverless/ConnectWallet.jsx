@@ -1,37 +1,29 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Provider, ConnectCoinbaseWallet } from './walletConnector'
+import { ConnectCoinbaseWallet } from './walletConnector'
 
-const ConnectWallet = () => {
+const ConnectWallet = ({ onConnect }) => {
   const [connected, setConnected] = useState(false);
   const [ownerAddress, setOwnerAddress] = useState('');
   const navigate = useNavigate();
 
   const handleConnectClick = () => {
-    // Simulate wallet connection
     ConnectCoinbaseWallet().then(res => {
       console.log('wallet connected')
-      console.log(res)
-      setConnected(true);
-      setOwnerAddress(res[0]) 
+      onConnect(res[0])
+      navigate('/home', { 
+        state: { connected: true, ownerAddress: res[0] } 
+      });
     }).catch(err => {
       console.log('error on connect')
     })
     
   };
 
-  if (connected) {
-    navigate('/scw-sample/home', { 
-      state: { connected: connected, ownerAddress: ownerAddress } 
-    });
-  }
-
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>Connect Wallet</h1>
-      {!connected && (
-        <button style={styles.button} onClick={handleConnectClick}>Connect Wallet</button>
-      )}
+      <button style={styles.button} onClick={handleConnectClick}>Connect Wallet</button>
     </div>
   );
 };
