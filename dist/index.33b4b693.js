@@ -48312,7 +48312,11 @@ const Checkout = ()=>{
         } catch  {
             setTotal("Error");
         }
-        else setTotal(total + value);
+        else {
+            if (value == "x") value = "*";
+            else if (value == "\xf7") value = "/";
+            setTotal(total + value);
+        }
     };
     const handleCharge = ()=>{
         const url = `${ROOT_URL}/pay?amount=${total}&receiveAddress=${ownerAddress}`;
@@ -48337,7 +48341,7 @@ const Checkout = ()=>{
                 onDisconnect: handleDisconnect
             }, void 0, false, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 52,
+                lineNumber: 58,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48345,7 +48349,7 @@ const Checkout = ()=>{
                 children: "New Charge"
             }, void 0, false, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 53,
+                lineNumber: 59,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48356,7 +48360,7 @@ const Checkout = ()=>{
                         children: "Total:"
                     }, void 0, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 55,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -48367,13 +48371,13 @@ const Checkout = ()=>{
                         ]
                     }, void 0, true, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 56,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 54,
+                lineNumber: 60,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48385,7 +48389,7 @@ const Checkout = ()=>{
                         children: "Charge"
                     }, void 0, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 59,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -48394,13 +48398,13 @@ const Checkout = ()=>{
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 60,
+                        lineNumber: 66,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 58,
+                lineNumber: 64,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48408,12 +48412,12 @@ const Checkout = ()=>{
                 children: [
                     "A/C",
                     "00",
-                    "%",
+                    "0.0",
                     "\xf7",
                     "7",
                     "8",
                     "9",
-                    "X",
+                    "x",
                     "4",
                     "5",
                     "6",
@@ -48431,12 +48435,12 @@ const Checkout = ()=>{
                         children: key
                     }, key, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 64,
+                        lineNumber: 70,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 62,
+                lineNumber: 68,
                 columnNumber: 7
             }, undefined),
             showQRCode && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48449,7 +48453,7 @@ const Checkout = ()=>{
                         includeMargin: true
                     }, void 0, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 75,
+                        lineNumber: 81,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -48459,24 +48463,24 @@ const Checkout = ()=>{
                             children: qrUrl
                         }, void 0, false, {
                             fileName: "serverless/Checkout.jsx",
-                            lineNumber: 82,
+                            lineNumber: 88,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "serverless/Checkout.jsx",
-                        lineNumber: 81,
+                        lineNumber: 87,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "serverless/Checkout.jsx",
-                lineNumber: 74,
+                lineNumber: 80,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "serverless/Checkout.jsx",
-        lineNumber: 51,
+        lineNumber: 57,
         columnNumber: 5
     }, undefined);
 };

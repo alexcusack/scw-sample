@@ -26,6 +26,12 @@ const Checkout = () => {
         setTotal('Error');
       }
     } else {
+    
+      if (value == "x") {
+        value = "*"
+      } else if (value == "÷") {
+        value = '/'
+      }
       setTotal(total + value);
     }
   };
@@ -60,7 +66,7 @@ const Checkout = () => {
         <button style={styles.button} onClick={handleCancel}>Cancel</button>
       </div>
       <div style={styles.keypad}>
-        {['A/C', '00', '%', '÷', '7', '8', '9', 'X', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='].map((key) => (
+        {['A/C', '00', '0.0', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='].map((key) => (
           <button
             key={key}
             style={styles.keypadButton}
