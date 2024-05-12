@@ -1,11 +1,9 @@
 import CoinbaseWalletSDK from '@coinbase/wallet-sdk'
 import FormAndQRComponent from './FormComponent'
-import Web3 from 'web3';
 
-
-const APP_NAME = 'Guest Checkout'
+const APP_NAME = 'Bodega'
 const APP_LOGO_URL = 'https://www.creativefabrica.com/wp-content/uploads/2022/04/17/Pizza-Logo-Design-Graphics-29132095-1-1-580x387.jpg'
-const DEFAULT_ETH_JSONRPC_URL = "https://seplia.base.org"
+const DEFAULT_ETH_JSONRPC_URL = "https://sepolia.base.org/"
 const DEFAULT_CHAIN_ID = 84532
 export const CoinbaseWallet = new CoinbaseWalletSDK({
   appName: APP_NAME,
@@ -49,15 +47,26 @@ const usdcABI = [
 ];
 
 export async function SendUSDC(sender, recipient, amount) {
-  const web3 = new Web3(Provider);
-  const usdcContract = new web3.eth.Contract(usdcABI, usdcContractAddress);
-  const amountInWei = web3.utils.toWei(amount.toString(), 'mwei'); // USDC has 6 decimals
+  const amountInWei = (amount * 1e6).toString(); // USDC has 6 decimals
 
+  const txParams = {
+    from: sender,
+    to: usdcContractAddress, // USDC contract address
+    value: '0x0',
+    data: '0xa9059cbb' + 
+          recipient.substring(2).padStart(64, '0') + 
+          parseInt(amountInWei).toString(16).padStart(64, '0'),
+    gas: '0x7d3c' // Gas limit, you might need to adjust this
+  };
+
+  console.log(txParams)
   try {
-    const tx = await usdcContract.methods.transfer(recipient, amountInWei).send({
-      from: sender
+    const txHash = await Provider.request({
+      method: 'eth_sendTransaction',
+      params: [txParams]
     });
-    console.log('Transaction successful', tx);
+
+    console.log('Transaction successful', txHash);
   } catch (error) {
     console.error('Transaction failed', error);
   }
