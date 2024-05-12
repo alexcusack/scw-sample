@@ -99,6 +99,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '20px',
+    paddingTop: '58px',
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f7f7f7',
     minHeight: '100vh',

@@ -48117,6 +48117,7 @@ _c = HomePage;
         flexDirection: "column",
         alignItems: "center",
         padding: "20px",
+        paddingTop: "58px",
         fontFamily: "Arial, sans-serif",
         backgroundColor: "#f7f7f7",
         minHeight: "100vh",
@@ -48235,7 +48236,8 @@ const styles = {
         top: "10px",
         left: "10px",
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        paddingBottom: "60px"
     },
     pill: {
         backgroundColor: "#007bff",
@@ -48497,6 +48499,7 @@ const styles = {
         flexDirection: "column",
         alignItems: "center",
         padding: "20px",
+        paddingTop: "58px",
         fontFamily: "Arial, sans-serif",
         backgroundColor: "#f7f7f7",
         minHeight: "100vh"
