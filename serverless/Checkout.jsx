@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 
-const Checkout = ({receiveAddress}) => {
+const ROOT_URL = window.location.host.startsWith("localhost") ? 
+ 'http://localhost:3000' : 
+ 'https://alexcusack.github.io/scw-sample'
+;
+
+const Checkout = () => {
   const [total, setTotal] = useState('');
   const [showQRCode, setShowQRCode] = useState(false);
+  const location = useLocation();
+  const { receiveAddress } = location.state || {}; // Get state from navigation
 
   const handleButtonPress = (value) => {
     if (value === 'A/C') {
@@ -53,7 +61,7 @@ const Checkout = ({receiveAddress}) => {
       {showQRCode && (
         <div style={styles.qrContainer}>
           <QRCode
-            value={`http://localhost:3000/pay?amount=${total}`}
+            value={`${ROOT_URL}/pay?amount=${total}&receiveAddress=${receiveAddress}`}
             size={256}
             level="H"
             includeMargin={true}

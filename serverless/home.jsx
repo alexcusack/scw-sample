@@ -9,7 +9,9 @@ const Home = () => {
   const transactions = []; // Placeholder for transaction navigate
 
   const handleChargeClick = () => {
-    navigate('/scw-sample/checkout');
+    navigate('/scw-sample/checkout', { 
+      state: { receiveAddress: ownerAddress } 
+    });
   };
 
   // Function to format the owner address
